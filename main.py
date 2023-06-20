@@ -2,6 +2,7 @@ import pyttsx3
 import speech_recognition as sr
 import datetime
 import wikipedia
+import pywhatkit
 
 audio = sr.Recognizer()
 maquina = pyttsx3.init()
@@ -38,6 +39,10 @@ def comandoVoiceUser():
         print(result)
         maquina.say(result)
         maquina.runAndWait()
-
+    elif 'toque' in comando:
+        music=comando.replace('toque' , '')
+        result= pywhatkit.playonyt(music)
+        maquina.say('Tocando musica')
+        maquina.runAndWait()
 
 comandoVoiceUser()
